@@ -1,23 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import TopBar from './components/TopBar';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar'; // Only Navbar needed
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Membership from './pages/Membership';
-import NewsPage from './pages/NewsPage';  // Make sure this is NewsPage, not News
+import NewsPage from './pages/NewsPage';
 import Resources from './pages/Resources';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <TopBar />
+        {/* Only Navbar needed - it contains both top bar and main navigation */}
         <Navbar />
+        
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -25,7 +25,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/membership" element={<Membership />} />
-            <Route path="/news" element={<NewsPage />} />  {/* Changed to NewsPage */}
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/resources" element={<Resources />} />
             
             {/* Sub-routes for About */}
@@ -43,6 +43,7 @@ function App() {
             <Route path="/services/research" element={<Services />} />
           </Routes>
         </main>
+        
         <Footer />
       </div>
     </Router>
