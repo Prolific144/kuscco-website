@@ -1,24 +1,51 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import TopBar from './components/TopBar';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import Membership from './pages/Membership';
+import NewsPage from './pages/NewsPage';  // Make sure this is NewsPage, not News
+import Resources from './pages/Resources';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <TopBar />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/membership" element={<Membership />} />
+            <Route path="/news" element={<NewsPage />} />  {/* Changed to NewsPage */}
+            <Route path="/resources" element={<Resources />} />
+            
+            {/* Sub-routes for About */}
+            <Route path="/about/history" element={<About />} />
+            <Route path="/about/mission" element={<About />} />
+            <Route path="/about/board" element={<About />} />
+            <Route path="/about/management" element={<About />} />
+            
+            {/* Sub-routes for Services */}
+            <Route path="/services/insurance" element={<Services />} />
+            <Route path="/services/financial" element={<Services />} />
+            <Route path="/services/consultancy" element={<Services />} />
+            <Route path="/services/capacity-building" element={<Services />} />
+            <Route path="/services/advocacy" element={<Services />} />
+            <Route path="/services/research" element={<Services />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

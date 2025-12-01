@@ -1,0 +1,128 @@
+// Since styled-components is now installed, we can use it
+// But let's create a simpler version if you prefer
+
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyles = createGlobalStyle`
+  :root {
+    --primary: #0a3d62;
+    --secondary: #079992;
+    --accent: #e55039;
+    --light: #f7f7f7;
+    --dark: #2c3e50;
+    --gray: #95a5a6;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--light);
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background-color: #083253;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background-color: var(--secondary);
+    color: var(--white);
+  }
+
+  .btn-secondary:hover {
+    background-color: #06837c;
+    transform: translateY(-2px);
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+  }
+
+  .section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+  }
+
+  .section-title p {
+    color: var(--gray);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary);
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 60px 0;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+    }
+    
+    .section-title::after {
+      bottom: -10px;
+    }
+  }
+`;
+
+export default GlobalStyles;
