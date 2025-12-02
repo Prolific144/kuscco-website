@@ -9,25 +9,25 @@ const Stats = () => {
   const stats = [
     { 
       icon: <FaUsers />, 
-      value: 5000, 
+      value: 500, 
       label: 'Member Cooperatives',
       suffix: '+'
     },
     { 
       icon: <FaHandshake />, 
-      value: 10, 
+      value: 1, 
       label: 'Million Members',
       suffix: 'M+'
     },
     { 
       icon: <FaChartLine />, 
-      value: 200, 
+      value: 2, 
       label: 'Billion Assets',
       suffix: 'B+'
     },
     { 
       icon: <FaBuilding />, 
-      value: 47, 
+      value: 17, 
       label: 'Years of Service',
       suffix: '+'
     }
