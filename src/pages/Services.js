@@ -6,8 +6,6 @@ const Services = () => {
   const location = useLocation();
   
   const getPageTitle = () => {
-    if (location.pathname.includes('insurance')) return 'Insurance Services';
-    if (location.pathname.includes('financial')) return 'Financial Services';
     if (location.pathname.includes('consultancy')) return 'Consultancy Services';
     if (location.pathname.includes('capacity-building')) return 'Capacity Building';
     if (location.pathname.includes('advocacy')) return 'Advocacy';
@@ -16,8 +14,6 @@ const Services = () => {
   };
 
   const getPageDescription = () => {
-    if (location.pathname.includes('insurance')) return 'Comprehensive insurance solutions for SACCOs';
-    if (location.pathname.includes('financial')) return 'Specialized financial products and services';
     if (location.pathname.includes('consultancy')) return 'Expert advisory and consultancy services';
     if (location.pathname.includes('capacity-building')) return 'Training and capacity development';
     if (location.pathname.includes('advocacy')) return 'Representing SACCO interests';

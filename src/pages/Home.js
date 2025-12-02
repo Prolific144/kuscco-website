@@ -11,7 +11,7 @@ import '../styles/Home.css';
 const Home = () => {
   const [heroImages] = useState([
     {
-      url: '/images/hero1.jpg',
+      url: '/images/hero/hero1.jpg',
       alt: 'KUSCCO Cooperative Meeting',
       title: 'Karibu KUSCCO',
       subtitle: 'Empowering Cooperatives for Sustainable Growth',
@@ -20,7 +20,7 @@ const Home = () => {
       color: 'var(--primary)'
     },
     {
-      url: '/images/hero2.jpg',
+      url: '/images/hero/hero2.jpg',
       alt: 'Financial Services',
       title: 'Comprehensive Financial Solutions',
       subtitle: 'Banking, Insurance & Investment Services',
@@ -29,7 +29,7 @@ const Home = () => {
       color: 'var(--secondary)'
     },
     {
-      url: '/images/hero3.jpg',
+      url: '/images/hero/hero3.jpg',
       alt: 'Capacity Building',
       title: 'Building Capacity',
       subtitle: 'Training & Development Programs',
@@ -38,7 +38,7 @@ const Home = () => {
       color: 'var(--accent)'
     },
     {
-      url: '/images/hero4.jpg',
+      url: '/images/hero/hero4.jpg',
       alt: 'Cooperative Success',
       title: 'Transforming Lives',
       subtitle: 'Through Cooperative Movement',

@@ -21,6 +21,46 @@
   line-height: 1.7;
 }
 
+/* New Vision Mission Section */
+.vision-mission-section {
+  margin: 30px 0;
+  padding: 25px;
+  background-color: var(--light);
+  border-radius: 8px;
+  border-left: 4px solid var(--secondary);
+}
+
+.vision-mission-section h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.vision-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.vision-box, .mission-box {
+  padding: 15px;
+  background-color: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.vision-box h4, .mission-box h4 {
+  color: var(--secondary);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.vision-box p, .mission-box p {
+  color: var(--dark);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .about-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -78,6 +118,11 @@
   .about-img {
     order: 1;
   }
+  
+  .vision-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -87,5 +132,9 @@
   
   .about-text h2 {
     font-size: 1.8rem;
+  }
+  
+  .vision-mission-section {
+    padding: 20px;
   }
 }

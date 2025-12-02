@@ -35,8 +35,6 @@ function App() {
             <Route path="/about/management" element={<About />} />
             
             {/* Sub-routes for Services */}
-            <Route path="/services/insurance" element={<Services />} />
-            <Route path="/services/financial" element={<Services />} />
             <Route path="/services/consultancy" element={<Services />} />
             <Route path="/services/capacity-building" element={<Services />} />
             <Route path="/services/advocacy" element={<Services />} />

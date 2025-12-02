@@ -1,41 +1,64 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import '../styles/Page.css';
+import '../styles/About.css';
 
 const About = () => {
-  const location = useLocation();
-  
-  const getPageTitle = () => {
-    if (location.pathname.includes('history')) return 'Our History';
-    if (location.pathname.includes('mission')) return 'Mission & Vision';
-    if (location.pathname.includes('board')) return 'Board of Directors';
-    if (location.pathname.includes('management')) return 'Management Team';
-    return 'About Us';
-  };
-
-  const getPageDescription = () => {
-    if (location.pathname.includes('history')) return 'Learn about our journey since 1973';
-    if (location.pathname.includes('mission')) return 'Our mission, vision and core values';
-    if (location.pathname.includes('board')) return 'Meet our board of directors';
-    if (location.pathname.includes('management')) return 'Our experienced management team';
-    return 'Learn more about KUSCCO';
-  };
+  const stats = [
+    { number: '4,000+', label: 'Member SACCOs' },
+    { number: '47', label: 'Years of Service' },
+    { number: '5M+', label: 'Members Served' }
+  ];
 
   return (
-    <div className="page-container">
-      <div className="page-hero">
-        <div className="container">
-          <h1>{getPageTitle()}</h1>
-          <p>{getPageDescription()}</p>
+    <section className="section about">
+      <div className="container">
+        <div className="about-content">
+          <div className="about-text">
+            <h2>About KUSCCO</h2>
+            <p>KUSCCO stands as the apex organization for Savings and Credit Cooperatives in Kenya, championing the formation and growth of robust SACCOs. Our primary mandate is to advocate for and represent SACCOs.</p>
+            <p>We focus on empowering middle and low-income earners in both rural and urban areas, a demographic that forms the backbone of Kenya's economy through the Small and Medium Enterprises (SME) sector.</p>
+            <p>Our philosophy revolves around collaboration and member empowerment. To this end, we have developed a suite of tailored products and services designed to benefit all SACCOs and their members across Kenya, fostering a stronger, more resilient cooperative ecosystem.</p>
+            
+            {/* Vision and Mission Section */}
+            <div className="vision-mission-section">
+              <h3>Vision & Mission</h3>
+              <div className="vision-mission-grid">
+                <div className="vision-box">
+                  <h4>Our Vision</h4>
+                  <p>Sustainable environment for SACCOs growth in Kenya</p>
+                </div>
+                <div className="mission-box">
+                  <h4>Our Mission</h4>
+                  <p>To promote Co-operatives through advocacy and provision of market-driven products and services</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="about-stats">
+              {stats.map((stat, index) => (
+                <div key={index} className="stat-item">
+                  <div className="stat-number">{stat.number}</div>
+                  <div className="stat-label">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Simple Link to full about page */}
+            <a href="/about-details" className="btn btn-primary">Read More About Us</a>
+          </div>
+          
+          <div className="about-img">
+            <img 
+              src="https://images.unsplash.com/photo-1551830893-b91e0a810b32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              alt="KUSCCO Team"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = 'https://via.placeholder.com/600x400/0a3d62/ffffff?text=KUSCCO+Team';
+              }}
+            />
+          </div>
         </div>
       </div>
-      <div className="page-content">
-        <div className="container">
-          <h2>{getPageTitle()}</h2>
-          <p>Detailed content for {getPageTitle().toLowerCase()}...</p>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 

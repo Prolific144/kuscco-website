@@ -79,8 +79,6 @@ const Navbar = () => {
   ];
 
   const servicesSubmenu = [
-    { title: 'Insurance Services', path: '/services/insurance', icon: <FaArrowRight /> },
-    { title: 'Financial Services', path: '/services/financial', icon: <FaArrowRight /> },
     { title: 'Consultancy', path: '/services/consultancy', icon: <FaArrowRight /> },
     { title: 'Capacity Building', path: '/services/capacity-building', icon: <FaArrowRight /> },
     { title: 'Advocacy Services', path: '/services/advocacy', icon: <FaArrowRight /> },
