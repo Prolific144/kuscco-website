@@ -4,18 +4,17 @@ import '../styles/Partners.css';
 const Partners = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const sliderRef = useRef(null);
+  const containerRef = useRef(null);
 
-  // Array of partner logos - using the gif files from your folder
+  // Array of partner logos
   const partnerLogos = Array.from({ length: 9 }, (_, i) => ({
     id: i + 1,
     src: `/images/partners/${i + 1}.gif`,
     alt: `Partner ${i + 1}`,
-    name: `Partner Organization ${i + 1}`
   }));
 
-  const partnersPerSlide = 5;
-  const totalSlides = Math.ceil(partnerLogos.length / partnersPerSlide);
+  const visibleCount = 5; // Number of logos visible at once
+  const totalSlides = Math.ceil(partnerLogos.length);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
@@ -34,24 +33,22 @@ const Partners = () => {
 
     const interval = setInterval(() => {
       nextSlide();
-    }, 4000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [currentIndex, isPaused]);
 
-  // Get current slide partners
-  const getCurrentPartners = () => {
-    const startIndex = currentIndex * partnersPerSlide;
-    const endIndex = startIndex + partnersPerSlide;
-    return partnerLogos.slice(startIndex, endIndex);
+  // Create a seamless loop of logos
+  const getDisplayLogos = () => {
+    const logos = [];
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (currentIndex + i) % partnerLogos.length;
+      logos.push(partnerLogos[index]);
+    }
+    return logos;
   };
 
-  // If we have fewer partners than per slide, duplicate some
-  const displayPartners = getCurrentPartners();
-  if (displayPartners.length < partnersPerSlide) {
-    const needed = partnersPerSlide - displayPartners.length;
-    displayPartners.push(...partnerLogos.slice(0, needed));
-  }
+  const displayLogos = getDisplayLogos();
 
   return (
     <section className="partners-section home-section">
@@ -72,31 +69,32 @@ const Partners = () => {
 
           <div 
             className="partners-slider"
-            ref={sliderRef}
+            ref={containerRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {displayPartners.map((partner, index) => (
-              <div 
-                key={`${partner.id}-${currentIndex}`}
-                className={`partner-card ${isPaused ? 'paused' : ''}`}
-                style={{
-                  animationDelay: `${index * 0.1}s`
-                }}
-              >
-                <div className="partner-logo">
-                  <img 
-                    src={partner.src} 
-                    alt={partner.alt}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = `https://via.placeholder.com/120x60/0a3d62/ffffff?text=Partner+${partner.id}`;
-                    }}
-                  />
+            <div className="partners-track">
+              {displayLogos.map((partner, index) => (
+                <div 
+                  key={`${partner.id}-${index}`}
+                  className={`partner-logo-wrapper ${isPaused ? 'paused' : ''}`}
+                  style={{
+                    animationDelay: `${index * 0.1}s`
+                  }}
+                >
+                  <div className="partner-logo">
+                    <img 
+                      src={partner.src} 
+                      alt={partner.alt}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `https://via.placeholder.com/180x90/0a3d62/ffffff?text=Partner+${partner.id}`;
+                      }}
+                    />
+                  </div>
                 </div>
-                <p className="partner-name">{partner.name}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <button 

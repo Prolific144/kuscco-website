@@ -2,6 +2,7 @@
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   position: relative;
   overflow: hidden;
+  padding: 60px 0;
 }
 
 .partners-section::before {
@@ -14,55 +15,79 @@
   background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
 }
 
+.partners-section .section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.partners-section .section-header h2 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.partners-section .section-header p {
+  color: var(--gray);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .partners-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   position: relative;
-  margin: 0 auto 40px;
   max-width: 1200px;
+  margin: 0 auto 40px;
 }
 
 .partners-slider {
   flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  padding: 30px;
+  overflow: hidden;
+  position: relative;
+  height: 180px;
   background: var(--white);
   border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(10, 61, 98, 0.08);
-  position: relative;
-  min-height: 200px;
+  box-shadow: 0 15px 50px rgba(10, 61, 98, 0.1);
 }
 
-.partner-card {
-  background: var(--white);
-  border-radius: 15px;
-  padding: 25px 20px;
+.partners-track {
   display: flex;
-  flex-direction: column;
+  height: 100%;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(10, 61, 98, 0.1);
+  padding: 0 40px;
+}
+
+.partner-logo-wrapper {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 120px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   animation: floatIn 0.6s ease-out backwards;
 }
 
-.partner-card:hover {
-  transform: translateY(-15px) scale(1.05);
-  box-shadow: 0 20px 40px rgba(7, 153, 146, 0.15);
-  border-color: var(--secondary);
-  z-index: 2;
+.partner-logo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 15px;
+  border: 1px solid rgba(10, 61, 98, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
 }
 
-.partner-card:hover .partner-logo {
-  transform: scale(1.1);
-}
-
-.partner-card::before {
+.partner-logo::before {
   content: '';
   position: absolute;
   top: 0;
@@ -75,19 +100,15 @@
   transition: transform 0.4s ease;
 }
 
-.partner-card:hover::before {
-  transform: scaleX(1);
+.partner-logo:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(7, 153, 146, 0.15);
+  border-color: var(--secondary);
+  z-index: 2;
 }
 
-.partner-logo {
-  width: 100%;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
-  padding: 10px;
+.partner-logo:hover::before {
+  transform: scaleX(1);
 }
 
 .partner-logo img {
@@ -98,32 +119,11 @@
   object-fit: contain;
   filter: grayscale(100%) brightness(1.1);
   transition: all 0.4s ease;
-  border-radius: 5px;
-  padding: 5px;
 }
 
-.partner-card:hover .partner-logo img {
+.partner-logo:hover img {
   filter: grayscale(0%) brightness(1);
-  transform: scale(1.05);
-}
-
-.partner-name {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--dark);
-  font-weight: 600;
-  margin-top: 10px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  height: 0;
-  overflow: hidden;
-}
-
-.partner-card:hover .partner-name {
-  opacity: 1;
-  transform: translateY(0);
-  height: auto;
+  transform: scale(1.1);
 }
 
 .partners-nav {
@@ -142,6 +142,7 @@
   font-weight: bold;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   z-index: 2;
+  flex-shrink: 0;
 }
 
 .partners-nav:hover {
@@ -226,11 +227,11 @@
 @keyframes floatIn {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.9);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -245,28 +246,56 @@
   }
 }
 
+/* Auto-slide animation */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200px);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .partners-slider {
-    grid-template-columns: repeat(3, 1fr);
+  .partner-logo-wrapper {
+    width: 180px;
+    height: 110px;
+    margin: 0 15px;
   }
 }
 
 @media (max-width: 992px) {
   .partners-slider {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px;
+    height: 160px;
+  }
+  
+  .partner-logo-wrapper {
+    width: 160px;
+    height: 100px;
+    margin: 0 12px;
+  }
+  
+  .partners-track {
+    padding: 0 30px;
   }
   
   .partners-nav {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     font-size: 1.3rem;
   }
 }
 
 @media (max-width: 768px) {
+  .partners-section {
+    padding: 40px 0;
+  }
+  
+  .partners-section .section-header h2 {
+    font-size: 2rem;
+  }
+  
   .partners-container {
     flex-direction: column;
     gap: 15px;
@@ -282,37 +311,42 @@
   
   .partners-slider {
     order: 1;
-    grid-template-columns: repeat(2, 1fr);
     width: 100%;
+    height: 140px;
   }
   
-  .partner-card {
-    padding: 20px 15px;
+  .partners-track {
+    padding: 0 20px;
   }
   
-  .partner-logo {
-    height: 70px;
+  .partner-logo-wrapper {
+    width: 140px;
+    height: 90px;
+    margin: 0 10px;
   }
 }
 
 @media (max-width: 576px) {
   .partners-slider {
-    grid-template-columns: 1fr;
+    height: 120px;
   }
   
-  .partner-card {
-    max-width: 250px;
-    margin: 0 auto;
+  .partners-track {
+    padding: 0 15px;
   }
   
-  .partner-name {
-    opacity: 1;
-    transform: translateY(0);
-    height: auto;
+  .partner-logo-wrapper {
+    width: 120px;
+    height: 80px;
+    margin: 0 8px;
+  }
+  
+  .partner-logo {
+    padding: 15px;
   }
 }
 
 /* Pause Animation */
-.partner-card.paused {
+.partner-logo-wrapper.paused {
   animation-play-state: paused;
 }
