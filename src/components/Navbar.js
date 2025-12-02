@@ -154,7 +154,7 @@ const Navbar = () => {
           <div className="logo">
             <Link to="/" onClick={closeMenu}>
               <img 
-                src="https://kuscco.com/images/kuscco-logo.png" 
+                url="/images/kuscco-logo.png"
                 alt="KUSCCO Logo" 
                 className="logo-image"
                 onError={(e) => {
